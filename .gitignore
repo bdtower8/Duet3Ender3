@@ -1,0 +1,7 @@
+gcodes/*
+filaments/*
+sys/Duet3*
+sys/iapduet3.bin
+sys/dwc2settings.json
+sys/heightmap.csv
+www
