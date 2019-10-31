@@ -22,12 +22,13 @@ M569 P3 S1                                        ; physical drive 3 goes forwar
 M569 P4 S0                                        ; physical drive 4 goes backwards
 
 M584 X0 Y1 Z2:4 E3                                ; set drive mapping
-M350 X32 Y32 Z8 E16 I1                            ; configure microstepping with interpolation
-M92 X160.00 Y160.00 Z800.00 E393.94               ; set steps per mm
-M566 X1000.00 Y1000.00 Z60.00 E300.00             ; set maximum instantaneous speed changes (mm/min)
-M203 X33000.00 Y33000.00 Z1200.00 E3000.00        ; set maximum speeds (mm/min)
-M201 X7000.00 Y7000.00 Z200.00 E5000.00           ; set accelerations (mm/s^2)
-M906 X1850 Y1850 Z1350 E1500 I30                  ; set motor currents (mA) and motor idle factor in per cent
+M350 X16 Y16 Z8 E16 I1                            ; configure microstepping with interpolation
+M92 X160.00 Y160.00 Z800.00 E397.88                 ; set steps per mm
+M566 X600.00 Y600.00 Z60.00 E300.00             ; set maximum instantaneous speed changes (mm/min)
+M203 X22000.00 Y22000.00 Z1200.00 E3000.00        ; set maximum speeds (mm/min)
+M201 X4000.00 Y4000.00 Z200.00 E5000.00           ; set accelerations (mm/s^2)
+M906 X4000 Y4000 Z1250 E1500 I30                  ; set motor currents (mA) and motor idle factor in per cent
+M204 P800 T4000 R5000
 M84 S30                                           ; Set idle timeout
 
 ; Axis Limits
@@ -42,8 +43,8 @@ M574 Y1 S1 P"io1.in"                              ; Y min active high endstop sw
 M574 Z1 S2                                        ; end stop is z probe
 M558 P9 C"io8.in" H4 R1 F800 T33000 A1 S0.02      ; set Z probe type to bltouch and the dive height + speeds
 M950 S0 C"io8.out"                                ; probe
-G31 P500 X-40 Y10 Z0.6                            ; probe offset
-M557 X10:210 Y20:200 P3                           ; define mesh grid
+G31 P500 X-20 Y-20 Z0.25                          ; probe offset
+M557 X5:210 Y20:190 P3                            ; define mesh grid
 
 ; Heaters
 M308 S0 P"0.temp0" Y"thermistor" T97700 B4619 C9.743561e-8 R2200    ; define bed temperature sensor
@@ -55,8 +56,9 @@ M950 H1 C"out1" T1                                                  ; heater 1 u
 M143 H0 S120                                       ; set temperature limit for heater 0 to 120C
 M143 H1 S290                                       ; set temperature limit for heater 1 to 290C
 
-; Heater cartridge parameters (24v 40w element)
-M307 H1 A407.5 C228.4 D2.9                         ; results from m303 h1 s275
+; Heater cartridge parameters
+;M307 H1 A407.5 C228.4 D2.9                        ; volcano, 40w results from m303 h1 s275
+M307 H1 A559.7 C283.1 D3.5                         ; v6, 30w results from m303 h1 s275
 
 ; heatsink fan
 M950 F0 C"out7"

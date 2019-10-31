@@ -10,7 +10,7 @@ G1 X5 Y5 F6000           ; go back a few mm
 G1 S1 X-250 Y-235 F360   ; move slowly to X and Y axis endstops once more (second pass)
 G90			 ; absolute positioning
 G1 X250 F20000		 ; wipe
-G1 X155 Y110 F33000	 ; find center of the bed
+G1 X122 Y140 F33000	 ; find center of the bed
 G30
 
 ; Uncomment the following lines to lift Z after probing
